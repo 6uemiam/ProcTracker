@@ -1,5 +1,5 @@
 # Proc Tracker
-## World of Warcraft Addon
+### World of Warcraft Addon
 
 Proc Tracker tracks mage's (for now) proc-like spells, such as Fingers of Frost, for all three specializations.
 
