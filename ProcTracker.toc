@@ -1,0 +1,12 @@
+## Interface: 60100
+## Title: ProcTracker
+## Notes: Tracking Mage's proc-like spells
+## Author: Weitheill
+## Version: 0.1.0 Alpha
+
+Localization.lua
+GlobalVariables.lua
+Events.lua
+LoadProcs.lua
+ProcTracker.lua
+ProcTracker.xml

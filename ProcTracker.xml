@@ -1,0 +1,159 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="ProcTracker.lua"/>
+	
+	<Frame name="PT_Proc_Template" virtual="true">
+		<Size>
+			<AbsDimension x="200" y="50"/>
+		</Size>
+		<Frames>
+			<Frame name="$parent_Icon">
+				<Size>
+					<AbsDimension x="50" y="50"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT"/>
+				</Anchors>
+				<Backdrop bgFile="Interface\Icons\Achievement_Boss_CThun"/>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parent_Count" font="Fonts\FRIZQT__.ttf" outline="THICK" text="2">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="30" y="-13"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<FontHeight>
+								<AbsValue val="20"/>
+							</FontHeight>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<StatusBar name="$parent_StatusBar" drawLayer="BORDER">
+				<Size>
+					<AbsDimension x="137" y="10"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_Icon">
+						<Offset>
+							<AbsDimension x="10" y="-7"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture setAllPoints="true">
+							<Color r="0" g="0" b="0" a="0.5"/>
+						</Texture>		
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture name="$parent_Border" file="Interface\CastingBar\UI-CastingBar-Border-Small">
+							<Size>
+								<AbsDimension x="180" y="50"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="-20" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<FontString name="$parent_Name" inherits="GameFontHighlight" text="Death is close...">
+							<Size>
+								<AbsDimension x="150" y="25"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="-5" y="20"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Expires" inherits="GameFontHighlight" text="100s">
+							<Size>
+								<AbsDimension x="150" y="25"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT"/>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<BarTexture urgency="5" file="Interface\TargetingFrame\UI-StatusBar"/>
+				<BarColor r="1.0" g="1.0" b="0.0"/>
+			</StatusBar>
+		</Frames>
+	</Frame>
+	<Frame name="PT_Frame" parent="UIParent" movable="true" clampedToScreen="true">
+		<Size>
+			<AbsDimension x="250" y="300"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Frames>
+			<Frame inherits="PT_Proc_Template" name="$parent_Proc1">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame inherits="PT_Proc_Template" name="$parent_Proc2">
+				<Anchors>
+					<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_Proc1">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame inherits="PT_Proc_Template" name="$parent_Proc3">
+				<Anchors>
+					<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_Proc2">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame inherits="PT_Proc_Template" name="$parent_Proc4">
+				<Anchors>
+					<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_Proc3">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame inherits="PT_Proc_Template" name="$parent_Proc5">
+				<Anchors>
+					<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_Proc4">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnLoad function="ProcTracker_OnLoad"/>
+			<OnEvent function="ProcTracker_OnEvent"/>
+			<OnUpdate function="ProcTracker_OnUpdate"/>
+			<OnDragStart function="ProcTracker_OnDragStart"/>
+			<OnDragStop function="ProcTracker_OnDragStop"/>
+			<OnEnter function="ProcTracker_OnEnter"/>
+			<OnLeave function="ProcTracker_OnLeave"/>
+		</Scripts>
+	</Frame>
+</Ui>
